@@ -1,25 +1,16 @@
 import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+// import InlineMath from "react-katex/src/InlineMath";
+import 'katex/dist/katex.min.css';
+import { InlineMath } from 'react-katex';
+import {SquareComponent} from "./components/square-component";
+import {IntegrationComponent} from "./components/integration-component";
+import {useCallback, useState} from "react/cjs/react.production.min";
+import {TestApp} from "./components/test-app";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+  return (<TestApp />)
 }
 
 export default App;

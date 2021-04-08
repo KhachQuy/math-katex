@@ -1,0 +1,6 @@
+.katex {
+    border: .1em dashed black;
+    padding: .1em;
+    background: beige;
+    cursor: pointer;
+}
