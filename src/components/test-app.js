@@ -1,5 +1,6 @@
 import {useCallback, useState} from "react";
 import {SquareComponent} from "./square-component";
+import {IntegrationComponent} from "./integration-component";
 
 export const TestApp = () => {
   const [value, setValue] = useState(undefined);
