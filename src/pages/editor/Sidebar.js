@@ -25,7 +25,7 @@ export default function Sidebar () {
             name : name,
             userId: currentUser.uid,
             cretedAt: database.getCurrentTimestamp(),
-            body
+            
         })
         setName("")
         cancelProject()
