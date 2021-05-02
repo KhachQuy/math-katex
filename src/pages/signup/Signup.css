@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito", sans-serif;
+  }
+  
+  button {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 15px 0;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background: #603bbb;
+    cursor: pointer;
+  }
+  
+  .signup {
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 20px;
+    background: #084e5a;
+    display: flex;
+  }
+  
+  .signup .signupContainer {
+    padding: 60px;
+    margin: auto;
+    width: 100%;
+    max-width: 600px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #084e5a;
+
+    box-shadow: 20px 50px 100px px rgba(0, 0, 0, 0.5);
+  }
+  
+  .signup .signupContainer label {
+    color: rgb(255, 255, 255);
+    margin: 14px 0;
+    display: block;
+    line-height: 1;
+  }
+  
+  .signup .signupContainer input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 19px;
+    padding: 10px;
+    background: rgba(187, 189, 183, 0.822);
+    color: #fff;
+    letter-spacing: 1px;
+  }
+  
+  .signup .signupContainer .btnContainer {
+    width: 100%;
+    padding: 24px 0;
+  }
+  
+  .signup .signupContainer .btnContainer p {
+    margin: 14px 0 0 0;
+    text-align: right;
+    color: #fff;
+  }
+  .title{
+    text-align: center;
+    color: #fff;
+  }
+
+  

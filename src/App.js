@@ -7,38 +7,38 @@ import {IntegrationComponent} from "./components/math/integration-component";
 import {useCallback, useState} from "react/cjs/react.production.min";
 import {TestApp} from "./components/math/test-app";
 import {Link} from "react-dom";
-import firebase from './fire';
 
-import React from 'react';
 import './App.css';
 
-import Navbar from './components/navbar/Navbar';
-import Home from './components/pages/HomePage/Home';
-import Data from './components/pages/login/Data';
-import Editor from './components/pages/editor/Data';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import fire from "./fire";
+import React from "react";
+import {BrowserRouter as Router, Switch, Route,} from 'react-router-dom';
+import Signup from "./pages/signup/Signup";
+import { AuthProvider } from "./context/AuthContext"
+import Home from "./pages/home/Home"
+import Login from "./pages/signup/Login"
+import PrivateRoute from "./pages/signup/PrivateRoute"
+import ForgotPassword from "./pages/signup/ForgotPassword"
+import Dashboard from './pages/editor/Dashboard';
 
 
-// const App = () => {
-//   return (<TestApp />)
-// }
+function App() {
+  return (
 
-function App()  {
-    return (
+    <Router>
+      {/* <Navbar/> */}
+          <AuthProvider>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <PrivateRoute exact path="/editor" component={Dashboard} />
 
-      <Router>
-          <Navbar/>
-          <Switch>
-              <Route path= '/' exact component={Home}  />
-              <Route path = '/signup' component = {Data}/>
-              <Route path = '/editor' component = {Editor}/>
-          </Switch>
+              <Route path="/signup" component={Signup} />
+              <Route path="/login" component={Login} />
+              <Route path="/forgot-password" component={ForgotPassword} />
+            </Switch>
+          </AuthProvider>
+    </Router>
 
-
-      </Router>
   )
+}
 
-
-  }
   export default App;
