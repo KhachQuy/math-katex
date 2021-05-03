@@ -18,7 +18,8 @@ import Home from "./pages/home/Home"
 import Login from "./pages/authemtication/Login"
 import PrivateRoute from "./pages/authemtication/PrivateRoute"
 import ForgotPassword from "./pages/authemtication/ForgotPassword"
-import EditorCenter from './pages/editor/EidtorCenter';
+// import EditorCenter from './pages/editor/EidtorCenter';
+import { Editor } from './pages/editor';
 import User from './pages/authemtication/User';
 import UpdateProfile from './pages/authemtication/UpdateProfile'
 
@@ -30,7 +31,7 @@ function App() {
           <AuthProvider>
             <Switch>
               <Route exact path="/" component={Home} />
-              <PrivateRoute exact path="/editor" component={EditorCenter} />
+              <PrivateRoute exact path="/editor" component={Editor} />
               <PrivateRoute path="/user" component={User} />
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
 
