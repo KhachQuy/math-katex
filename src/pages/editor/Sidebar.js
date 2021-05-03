@@ -7,8 +7,10 @@ import { useAuth } from "../../context/AuthContext"
 
 export default function Sidebar () {
     const [create, setCreate] = useState(false)
-    const [name,setName] = useState("")
-    const { currentUser } = useAuth()
+    const [name,setName] = useState("");
+    const { currentUser } = useAuth();
+
+    const [newlyCreatedProjectId, setNewlyCreatedProjectId] = useState(null);
 
     function createProject() {
         setCreate(true)
@@ -17,18 +19,20 @@ export default function Sidebar () {
         setCreate(false)
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
         //create a doc in the database
-
-        database.document.add({
+        const docRef = await database.document.add({
             name : name,
             userId: currentUser.uid,
             cretedAt: database.getCurrentTimestamp(),
             
-        })
-        setName("")
-        cancelProject()
+        });
+
+        const createdId = docRef?._delegate?._key?.path?.segments?.[1] || 'Unknown';
+        setName(`${name} - ${createdId}`);
+        console.log(`=> ${name} - ${createdId}`);
+        cancelProject()     // why?
     }
     return (
         <>
