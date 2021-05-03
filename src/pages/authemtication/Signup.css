@@ -6,14 +6,8 @@
   }
   
   button {
-    border: none;
-    outline: none;
     width: 100%;
-    padding: 15px 0;
-    color: #fff;
-    font-size: 16px;
     letter-spacing: 1px;
-    background: #603bbb;
     cursor: pointer;
   }
   
@@ -71,5 +65,12 @@
     text-align: center;
     color: #fff;
   }
-
+  .secondary-btn {
+    text-align: center;
+    text-decoration: none!important;
+  }
+  .link {
+    text-align: center;
+    text-decoration: none!important;
+  }
   

@@ -12,14 +12,15 @@ import './App.css';
 
 import React from "react";
 import {BrowserRouter as Router, Switch, Route,} from 'react-router-dom';
-import Signup from "./pages/signup/Signup";
+import Signup from "./pages/authemtication/Signup";
 import { AuthProvider } from "./context/AuthContext"
 import Home from "./pages/home/Home"
-import Login from "./pages/signup/Login"
-import PrivateRoute from "./pages/signup/PrivateRoute"
-import ForgotPassword from "./pages/signup/ForgotPassword"
-import Dashboard from './pages/editor/Dashboard';
-
+import Login from "./pages/authemtication/Login"
+import PrivateRoute from "./pages/authemtication/PrivateRoute"
+import ForgotPassword from "./pages/authemtication/ForgotPassword"
+import EditorCenter from './pages/editor/EidtorCenter';
+import User from './pages/authemtication/User';
+import UpdateProfile from './pages/authemtication/UpdateProfile'
 
 function App() {
   return (
@@ -29,7 +30,9 @@ function App() {
           <AuthProvider>
             <Switch>
               <Route exact path="/" component={Home} />
-              <PrivateRoute exact path="/editor" component={Dashboard} />
+              <PrivateRoute exact path="/editor" component={EditorCenter} />
+              <PrivateRoute path="/user" component={User} />
+              <PrivateRoute path="/update-profile" component={UpdateProfile} />
 
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />

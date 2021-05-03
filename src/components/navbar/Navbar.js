@@ -25,7 +25,6 @@ function Navbar() {
         <div className="navbar">
             <div className = "navbar-container container">
                 <Link to='/' className="navbar-logo" onClick={closeMobileMenu}>
-                    {/* <GrNotes className="navbar-icon" /> */}
                     EzMathDoc
                 </Link>
                 <div className ="menu-icon" onClick = {handleClick}>
