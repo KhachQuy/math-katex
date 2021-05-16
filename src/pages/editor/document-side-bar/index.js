@@ -62,7 +62,7 @@ export const DocumentSideBar = ({onDocumentCreated, documents}) => {
             <Form onSubmit = {handleSubmit}>
               <Modal.Body>
                 <Form.Group>
-                  <Form.Label>Folder Name</Form.Label>
+                  <Form.Label>Document Name</Form.Label>
                   <Form.Control
                     type="text"
                     requiredvalue={name}
