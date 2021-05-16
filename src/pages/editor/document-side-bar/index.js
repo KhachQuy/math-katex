@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import {useAuth} from "../../../context/AuthContext";
 import {database} from "../../../firebase";
-import {ProSidebar, SidebarHeader} from "react-pro-sidebar";
+import List from '@material-ui/core/List';
 import {Button, Form, Modal} from "react-bootstrap";
 import './style.css';
+import 'react-pro-sidebar/dist/css/styles.css';
 
 export const DocumentSideBar = ({onDocumentCreated, documents}) => {
   const [create, setCreate] = useState(false)
@@ -42,14 +43,21 @@ export const DocumentSideBar = ({onDocumentCreated, documents}) => {
   }
   return (
     <>
-      <ProSidebar>
-        <SidebarHeader>
-
-          <Button onClick = { createProject }>New Document</Button>
+      <div className = "Sidebar"> 
+        <div className = "sidebar-header">
+          <Button bsPrefix="sidebar-btn" onClick = { createProject }>New Document</Button>
+        </div>
+          
           {documents.map((doc) => {
             const { id, name } = doc;
-            return <Button key={id}>{name}</Button>
+            return (
+              <List className="doc-list">
+                <Button onClick={doc} bsPrefix="list-btn" key={id}>{name}</Button>
+              </List>
+            
+            )
           })}
+
           <Modal show ={create} onHide = {cancelProject}>
             <Form onSubmit = {handleSubmit}>
               <Modal.Body>
@@ -72,9 +80,8 @@ export const DocumentSideBar = ({onDocumentCreated, documents}) => {
 
               </Modal.Footer>
             </Form>
-          </Modal>
-        </SidebarHeader>
-      </ProSidebar>
+          </Modal> 
+      </div>
     </>
   )
-};
+        };

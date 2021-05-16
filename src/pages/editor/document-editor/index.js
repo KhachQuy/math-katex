@@ -3,6 +3,7 @@ import {Button} from "react-bootstrap";
 import {useCallback, useState} from "react";
 import {database} from "../../../firebase";
 import {InlineMath} from "react-katex";
+import './style.css'
 
 export const DocumentEditor = ({docRef, onSave}) => {
   const [text, setText] = useState(undefined);
@@ -23,13 +24,17 @@ export const DocumentEditor = ({docRef, onSave}) => {
 
     onSave();
   }, [onSave, docRef, text]);
-
+  
   return (
-    <div className={'document-editor'}>
-      {docRef && `${docRef.name} - ${docRef.id}` }
-      <ReactQuill value={text} onChange={onTextChanged} />
-      <Button onClick={onSaveCallback}>Save</Button>
-      <InlineMath math={`2^${3}`} />
-    </div>
+    <>
+      <div className="text-area">
+        {docRef && `${docRef.name} - ${docRef.id}` }
+        <ReactQuill value={text} onChange={onTextChanged} />
+        <Button onClick={onSaveCallback}>Save</Button>
+      </div>
+      <div className='render-area'>
+      Hello from render-area
+      </div>
+    </>
   )
 };

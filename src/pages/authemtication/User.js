@@ -5,20 +5,8 @@ import { Link, useHistory } from "react-router-dom"
 import './Signup.css'
 
 export default function User() {
-  const [error, setError] = useState("")
-  const { currentUser, logout } = useAuth()
-  const history = useHistory()
-
-  async function handleLogout() {
-    setError("")
-
-    try {
-      await logout()
-      history.push("/login")
-    } catch {
-      setError("Failed to log out")
-    }
-  }
+  const [error] = useState("")
+  const { currentUser} = useAuth()
 
   return (
     <>
@@ -32,9 +20,9 @@ export default function User() {
             Update Profile
           </Link>
         </Card.Body>
-        <div>
-        <Button variant="link" onClick={handleLogout}>
-          Log Out
+        <div className="secondary-btn">
+        <Button variant="link" href='/editor'>
+          Back
         </Button>
         </div>
         </div>

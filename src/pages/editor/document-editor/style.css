@@ -1,0 +1,40 @@
+.text-area {
+    width: 50%;
+    float: left;
+    background-color: white;
+    border: 1px solid black;
+    height: 100%;
+
+    /* left: 250px; */
+}
+
+.render-area {
+    height: 100%;
+    width: 50%;
+    float: left;
+    background-color: black;
+    border: 1px solid black;
+
+}
+
+.text-area .ql-editor {
+    min-height: 11in;
+    box-shadow: 0 0 5px 0 rbga(0,0,0,0.5);
+    background-color: whitesmoke;
+}
+.text-area .ql-editor .ql-snow {
+    border: none;
+    display:flex;
+    justify-content: center;
+}
+.text-area .ql-toolbar .ql-snow {
+    display:flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #F3f3f3;
+    border: none;
+    box-shadow: 0 0 5px 0 rbga (0,0,0,.5);
+
+}

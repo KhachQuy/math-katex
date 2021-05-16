@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import { GrNotes } from 'react-icons/gr';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Button } from '../button/Button'
 import './Navbar.css';
@@ -9,7 +8,7 @@ function Navbar() {
     const [button,setButton] =useState(true);
 
     const handleClick = () => setClick (!click);
-    const closeMobileMenu = () => setClick(false);
+    const closeMenu = () => setClick(false);
 
     const showButton = () => {
         if (window.innerWidth <= 960) {
@@ -23,8 +22,8 @@ function Navbar() {
     return (
         <>
         <div className="navbar">
-            <div className = "navbar-container container">
-                <Link to='/' className="navbar-logo" onClick={closeMobileMenu}>
+            {/* <div className = "navbar-container container"> */}
+                <Link to='/' className="navbar-logo" onClick={closeMenu}>
                     EzMathDoc
                 </Link>
                 <div className ="menu-icon" onClick = {handleClick}>
@@ -33,17 +32,17 @@ function Navbar() {
                 </div>
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li className="nav-item">
-                        <Link to= '/' className='nav-links' onClick={closeMobileMenu}>
+                        <Link to= '/' className='nav-links' onClick={closeMenu}>
                             Home
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to= '/about' className='nav-links' onClick={closeMobileMenu}>
+                        <Link to= '/about' className='nav-links' onClick={closeMenu}>
                             About
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to= '/signup' className='nav-links' onClick={closeMobileMenu}>
+                        <Link to= '/signup' className='nav-links' onClick={closeMenu}>
                             Sign Up
                         </Link>
                     </li>
@@ -56,7 +55,7 @@ function Navbar() {
                             </Link>
 
                         ): (
-                            <Link to ='/editor' className='btn-link'onClick={closeMobileMenu}>
+                            <Link to ='/editor' className='btn-link'onClick={closeMenu}>
                                 <Button buttonStyle ='btn--outline'>
                                     New Project
                                 </Button>
@@ -66,7 +65,7 @@ function Navbar() {
 
                     </li>
                 </ul>
-            </div>
+            {/* </div> */}
         </div>
             
         </>

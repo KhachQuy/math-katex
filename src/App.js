@@ -18,25 +18,25 @@ import Home from "./pages/home/Home"
 import Login from "./pages/authemtication/Login"
 import PrivateRoute from "./pages/authemtication/PrivateRoute"
 import ForgotPassword from "./pages/authemtication/ForgotPassword"
-// import EditorCenter from './pages/editor/EidtorCenter';
 import { Editor } from './pages/editor';
 import User from './pages/authemtication/User';
 import UpdateProfile from './pages/authemtication/UpdateProfile'
-
+import Navbar from './components/navbar/Navbar'
+import LoggedRoute from './pages/authemtication/Logged'
 function App() {
   return (
 
     <Router>
-      {/* <Navbar/> */}
+          {/* <Navbar/> */}
           <AuthProvider>
+            
             <Switch>
               <Route exact path="/" component={Home} />
               <PrivateRoute exact path="/editor" component={Editor} />
               <PrivateRoute path="/user" component={User} />
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
-
-              <Route path="/signup" component={Signup} />
-              <Route path="/login" component={Login} />
+              <LoggedRoute path="/signup" component={Signup} />
+              <LoggedRoute path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />
             </Switch>
           </AuthProvider>

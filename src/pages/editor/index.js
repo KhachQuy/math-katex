@@ -10,11 +10,13 @@ export const Editor = () => {
   const [activeDocumentRef, setActiveDocumentRef] = useState(undefined);
 
   const onDocumentCreatedCallback = useCallback(({ id, name }) => {
+    
     setDocuments((prev) => {
       const cloned = [...prev];
       cloned.push({id, name});
       return cloned;
     });
+
     setActiveDocumentRef({id, name});
     setShowEditor(true);
   }, []);
@@ -24,7 +26,9 @@ export const Editor = () => {
       <Navbar/>
       <div className={'page-content'}>
         <DocumentSideBar onDocumentCreated={onDocumentCreatedCallback} documents={documents} />
+        <div className= 'editor-area'>
         {showEditor && <DocumentEditor docRef={activeDocumentRef} onSave={() => {}} />}
+        </div>
       </div>
     </div>
   );
