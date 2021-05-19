@@ -4,7 +4,7 @@ import {useCallback, useState} from "react";
 import './style.css';
 import {DocumentEditor} from "./document-editor";
 
-export const Editor = () => {
+export const Editor = ({currentDoc}) => {
   const [showEditor, setShowEditor] = useState(false);
   const [documents, setDocuments] = useState([]);
   const [activeDocumentRef, setActiveDocumentRef] = useState(undefined);
@@ -17,7 +17,7 @@ export const Editor = () => {
       return cloned;
     });
 
-    setActiveDocumentRef({id, name});
+    setActiveDocumentRef(currentDoc);
     setShowEditor(true);
   }, []);
 

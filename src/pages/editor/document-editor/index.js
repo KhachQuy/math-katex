@@ -9,7 +9,7 @@ export const DocumentEditor = ({docRef, onSave}) => {
   const [text, setText] = useState(undefined);
 
   const onTextChanged = useCallback((value, delta, source, editor) => {
-    // console.log(`==> Text: ${text}`);
+    console.log(`==> Text: ${text}`);
     const content = editor.getText();
     if (content.endsWith(' /\n')) {
       alert('about to load function component');
@@ -28,7 +28,7 @@ export const DocumentEditor = ({docRef, onSave}) => {
   return (
     <>
       <div className="text-area">
-        {docRef && `${docRef.name} - ${docRef.id}` }
+        {docRef && `${docRef.name}` }
         <ReactQuill value={text} onChange={onTextChanged} />
         <Button onClick={onSaveCallback}>Save</Button>
       </div>

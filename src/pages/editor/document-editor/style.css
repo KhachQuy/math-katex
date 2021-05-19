@@ -12,14 +12,14 @@
     height: 100%;
     width: 50%;
     float: left;
-    background-color: black;
+    background-color: #1a9bf1;
     border: 1px solid black;
 
 }
 
 .text-area .ql-editor {
     min-height: 11in;
-    box-shadow: 0 0 5px 0 rbga(0,0,0,0.5);
+    box-shadow: 0 0 5px 0 RGBA(0,0,0,0.5);
     background-color: whitesmoke;
 }
 .text-area .ql-editor .ql-snow {
@@ -35,6 +35,6 @@
     z-index: 1;
     background-color: #F3f3f3;
     border: none;
-    box-shadow: 0 0 5px 0 rbga (0,0,0,.5);
+    box-shadow: 0 0 5px 0 RGBA(0,0,0,.5);
 
 }

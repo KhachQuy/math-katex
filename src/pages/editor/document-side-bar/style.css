@@ -15,6 +15,7 @@
 
 .doc-list{
     padding: 1px 0px !important;
+    color: white;
 }
 
 .list-btn {
@@ -25,7 +26,9 @@
     border: none;
     
 }
-.list-btn:focus {
-    background-color: rgb(30, 117, 139);
-    color: white;
+.Mui-selected {
+    background-color: rgb(59, 59, 59) !important;
+}
+.MuiDivider-root{
+    background-color: white!important;
 }
