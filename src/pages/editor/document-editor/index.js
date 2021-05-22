@@ -1,6 +1,6 @@
 import ReactQuill from "react-quill";
 import {Button} from "react-bootstrap";
-import {useCallback, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {database} from "../../../firebase";
 import {InlineMath} from "react-katex";
 import './style.css'
@@ -8,7 +8,6 @@ import './style.css'
 export const DocumentEditor = ( {docRef, onSave}) => {
 
     const [text, setText] = useState('');
-    const doc = database.document.doc(docRef.id);
 
     const onTextChanged = useCallback(async (value, delta, source, editor) => {
         // console.log(`==> Text: ${text}`);
@@ -20,7 +19,21 @@ export const DocumentEditor = ( {docRef, onSave}) => {
         setText(value);
     }, []);
 
+    useEffect(() => {
+      if (docRef === null || docRef === undefined ) {
+        return;
+      }
 
+      const doc = database.document.doc(docRef.id);
+      const promise = doc.get();
+      promise.then((result) => {
+        const data = result.data();
+        const { body } = data;
+        setText(body);
+      });
+
+      
+    }, [docRef]);
 
     const onSaveCallback = useCallback(async () => {
         const docId = docRef.id;
@@ -40,7 +53,8 @@ export const DocumentEditor = ( {docRef, onSave}) => {
         <Button onClick={onSaveCallback}>Save</Button>
       </div>
       <div className='render-area'>
-          <InlineMath math={`2^${2}`} />
+      {/* <div dangerouslySetInnerHTML={{__html: text}}></div> */}
+          <InlineMath math={text} />
       </div>
     </>
     )

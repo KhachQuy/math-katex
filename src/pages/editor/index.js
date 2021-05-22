@@ -14,12 +14,12 @@ export const Editor = () => {
   const [showEditor, setShowEditor] = useState(false);
   const [documents, setDocuments] = useState([]);
   const [activeDocumentRef, setActiveDocumentRef] = useState(undefined);
-  const docList = []
+  const docList = [];
 
   useEffect(() => {
     async function showDoc() {
-      const docu = await database.document.get()
-      const docs = docu.docs
+      const docu = await database.document.get();
+      const docs = docu.docs;
 
       docs.forEach((doc) => {
 
@@ -38,8 +38,6 @@ export const Editor = () => {
       setActiveDocumentRef((r[0]));
 
     })
-
-
 
   },[])
 

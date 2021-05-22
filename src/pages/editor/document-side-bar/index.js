@@ -91,29 +91,28 @@ export const DocumentSideBar = ({onDocumentCreated, onDocumentSelected, onDocume
           <Button bsPrefix="sidebar-btn" onClick = { createDoc }>New Document</Button>
         </div>
           {/*<span style = {{color: 'white'}}> Total of documents: {documents.length}</span>*/}
-          {documents.map((doc) => {
-            const { id, name } = doc;
-            return (
-              // list of created documents on sidebar
-              <List className="doc-list">
+          <List className="doc-list">
+            {documents.map((doc) => {
+              const { id, name } = doc;
+              return (
+                // list of created documents on sidebar
+                <div key={id}>
+                  <ListItem className ="item"
+                      button
+                      selected = {selectedIndex === id}
+                      onClick={(event) => handleListItemClick(event,doc)}
+                      alignItems = 'flex-start'
+                      >
+                    <ListItemText primary={name} />
+                    <DeleteIcon onClick = {() => deleteDocument(doc) } ></DeleteIcon>
+                  </ListItem>
+                  <Divider></Divider>
+                </div>
 
-                <ListItem className ="item"
-                    key={id} 
-                    button
-                    selected = {selectedIndex === id}
-                    onClick={(event) => handleListItemClick(event,doc)}
-                    alignItems = 'flex-start'
-                    >
-                  <ListItemText primary={name} />
-                  <DeleteIcon onClick = {() => deleteDocument(doc) } ></DeleteIcon>
-                </ListItem>
-                <Divider></Divider>
-              </List>
+              )
 
-            )
-
-          })}
-
+            })}
+          </List>
           {/* Create document form */}
           <Modal show ={create} onHide = {cancelDoc}>
             <Form onSubmit = {handleSubmit}>
