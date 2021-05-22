@@ -5,36 +5,43 @@ import {database} from "../../../firebase";
 import {InlineMath} from "react-katex";
 import './style.css'
 
-export const DocumentEditor = ({docRef, onSave}) => {
-  const [text, setText] = useState(undefined);
+export const DocumentEditor = ( {docRef, onSave}) => {
 
-  const onTextChanged = useCallback((value, delta, source, editor) => {
-    console.log(`==> Text: ${text}`);
-    const content = editor.getText();
-    if (content.endsWith(' /\n')) {
-      alert('about to load function component');
-    }
-    setText(value);
-  }, []);
+    const [text, setText] = useState('');
+    const doc = database.document.doc(docRef.id);
 
-  const onSaveCallback = useCallback(async () => {
-    const docId = docRef.id;
-    const doc = await database.document.doc(docId);
-    await doc.set({data: text});
+    const onTextChanged = useCallback(async (value, delta, source, editor) => {
+        // console.log(`==> Text: ${text}`);
+        const content = editor.getText();
+            if (content.endsWith(' /\n')) {
+              alert('about to load function component');
+            }
 
-    onSave();
-  }, [onSave, docRef, text]);
-  
-  return (
+        setText(value);
+    }, []);
+
+
+
+    const onSaveCallback = useCallback(async () => {
+        const docId = docRef.id;
+        const doc = await database.document.doc(docId);
+        const t = await doc.update({body: text});
+        // await doc.set({name: "1234"})
+        onSave();
+    }, [docRef, onSave, text]);
+    console.log("onsave",text)
+
+    return (
     <>
       <div className="text-area">
         {docRef && `${docRef.name}` }
         <ReactQuill value={text} onChange={onTextChanged} />
+
         <Button onClick={onSaveCallback}>Save</Button>
       </div>
       <div className='render-area'>
-      Hello from render-area
+          <InlineMath math={`2^${2}`} />
       </div>
     </>
-  )
+    )
 };

@@ -12,12 +12,13 @@ import {Editor} from '../';
 import './style.css';
 import 'react-pro-sidebar/dist/css/styles.css';
 
-export const DocumentSideBar = ({onDocumentCreated, documents}) => {
+export const DocumentSideBar = ({onDocumentCreated, onDocumentSelected, onDocumentDeleted, documents}) => {
   const [create, setCreate] = useState(false)
-  const [name,setName] = useState("");
+  const [name,setName] = useState('');
   const { currentUser } = useAuth();
+  const [text,setText] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(1)
-  const [newlyCreatedProjectId, setNewlyCreatedProjectId] = useState(null);
+
   function createDoc() {
     setCreate(true)
   }
@@ -27,12 +28,13 @@ export const DocumentSideBar = ({onDocumentCreated, documents}) => {
 
   //delete a document 
   async function deleteDocument(currentDoc) {
-    const docRef = database.document.doc(currentDoc.id);
+    const {id, name } = currentDoc
+    const docRef = database.document.doc(id);
     const doc = await docRef.get();
-
-    if(window.confirm(`Are you sure you want to delete: ${currentDoc.name}`)){
+    if(window.confirm(`Are you sure you want to delete: ${name}`)){
       if (doc.exists){
-        database.document.doc(currentDoc.id).delete().then(() => {
+        onDocumentDeleted({id,name})
+        database.document.doc(id).delete().then(() => {
           console.log({currentDoc},"Document successfully deleted!");
         }).catch((error) => {
           console.error("Error removing document: ", error);
@@ -42,15 +44,22 @@ export const DocumentSideBar = ({onDocumentCreated, documents}) => {
         alert('Document does not exist');
       }
     }
+
   }
 
   // get current doc corresponding with doc ID
-  const handleListItemClick = (event, Doc) => {
+  async function handleListItemClick(event, Doc){
     // Editor(Doc)
+    const {id, name } = Doc
     setSelectedIndex(Doc.id);
-    console.log(Doc.id)
-    
+
+    onDocumentSelected({
+      id: id,
+      name: name,
+    })
+
   };
+
   // Create a document on database
   async function handleSubmit(e) {
     e.preventDefault()
@@ -59,17 +68,18 @@ export const DocumentSideBar = ({onDocumentCreated, documents}) => {
       name : name,
       userId: currentUser.uid,
       createdAt: database.getCurrentTimestamp(),
+      body: text
     });
 
     const docId = docRef.id;
-    console.log(`==> DocId: ${docId}`);
-    // const createdId = docRef?._delegate?._key?.path?.segments?.[1] || 'Unknown';
-    // setName(`${name} - ${createdId}`);
-    // console.log(`=> ${name} - ${createdId}`);
+    const docText = docRef.body
     onDocumentCreated({
       id: docId,
       name,
-      currentUser
+      docText
+
+
+      // currentUser,
     });
 
     cancelDoc()     // why?
@@ -80,13 +90,13 @@ export const DocumentSideBar = ({onDocumentCreated, documents}) => {
         <div className = "sidebar-header">
           <Button bsPrefix="sidebar-btn" onClick = { createDoc }>New Document</Button>
         </div>
-
+          {/*<span style = {{color: 'white'}}> Total of documents: {documents.length}</span>*/}
           {documents.map((doc) => {
             const { id, name } = doc;
-
             return (
               // list of created documents on sidebar
               <List className="doc-list">
+
                 <ListItem className ="item"
                     key={id} 
                     button
@@ -94,13 +104,10 @@ export const DocumentSideBar = ({onDocumentCreated, documents}) => {
                     onClick={(event) => handleListItemClick(event,doc)}
                     alignItems = 'flex-start'
                     >
-                    
                   <ListItemText primary={name} />
                   <DeleteIcon onClick = {() => deleteDocument(doc) } ></DeleteIcon>
-
                 </ListItem>
                 <Divider></Divider>
-
               </List>
 
             )
