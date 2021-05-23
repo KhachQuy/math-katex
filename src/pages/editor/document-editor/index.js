@@ -53,7 +53,7 @@ export const DocumentEditor = ( {docRef, onSave}) => {
         <Button onClick={onSaveCallback}>Save</Button>
       </div>
       <div className='render-area'>
-      {/* <div dangerouslySetInnerHTML={{__html: text}}></div> */}
+      <div dangerouslySetInnerHTML={{__html: text}}></div>
           <InlineMath math={text} />
       </div>
     </>
