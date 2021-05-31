@@ -4,7 +4,7 @@ import {useCallback, useEffect, useState} from "react";
 import './style.css';
 import {DocumentEditor} from "./document-editor";
 import {database} from "../../firebase";
-import PropTypes from 'prop-types';
+import { useAuth } from "../../context/AuthContext"
 /***
  *
  * @returns {JSX.Element}
@@ -15,7 +15,7 @@ export const Editor = () => {
   const [documents, setDocuments] = useState([]);
   const [activeDocumentRef, setActiveDocumentRef] = useState(undefined);
   const docList = [];
-
+  const {currentUser} = useAuth();
   useEffect(() => {
     async function showDoc() {
       const docu = await database.document.get();
@@ -23,12 +23,16 @@ export const Editor = () => {
 
       docs.forEach((doc) => {
 
-        const data = doc.data()
-        const name = data.name
-        const id = doc.id
-        const document = {id, name}
-        docList.push(document)
-
+        const data = doc.data();
+        const user = data.userId;
+        const name = data.name;
+        const id = doc.id;
+        const document = {id, name};
+        
+        if (user === currentUser.uid) { 
+          docList.push(document)
+        };
+        
       })
       return docList
 

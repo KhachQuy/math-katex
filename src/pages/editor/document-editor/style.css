@@ -4,6 +4,8 @@
     background-color: white;
     border: 1px solid black;
     height: 100%;
+    resize: both;
+    overflow: auto;
 
     /* left: 250px; */
 }
@@ -12,9 +14,9 @@
     height: 100%;
     width: 50%;
     float: left;
-    background-color: #1a9bf1;
+    background-color: #698cdf;
     border: 1px solid black;
-
+    white-space: pre;
 }
 
 .text-area .ql-editor {
@@ -38,3 +40,7 @@
     box-shadow: 0 0 5px 0 RGBA(0,0,0,.5);
 
 }
+/* .katex {
+    border: none;
+    background: none;
+} */
