@@ -2,25 +2,23 @@
     width: 50%;
     float: left;
     background-color: white;
-    border: 1px solid black;
     height: 100%;
-    resize: both;
     overflow: auto;
 
-    /* left: 250px; */
 }
 
 .render-area {
     height: 100%;
     width: 50%;
-    float: left;
+    float: right;
     background-color: #698cdf;
-    border: 1px solid black;
+    overflow: auto;
     white-space: pre;
 }
 
 .text-area .ql-editor {
-    min-height: 11in;
+   min-height: 100vh;
+
     box-shadow: 0 0 5px 0 RGBA(0,0,0,0.5);
     background-color: whitesmoke;
 }
