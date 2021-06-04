@@ -12,6 +12,7 @@ import {Editor} from '../';
 import './style.css';
 import 'react-pro-sidebar/dist/css/styles.css';
 
+
 export const DocumentSideBar = ({onDocumentCreated, onDocumentSelected, onDocumentDeleted, documents}) => {
   const [create, setCreate] = useState(false)
   const [name,setName] = useState('');
@@ -87,9 +88,7 @@ export const DocumentSideBar = ({onDocumentCreated, onDocumentSelected, onDocume
   return (
     <>
       <div className = "Sidebar"> 
-        <div className = "sidebar-header">
           <Button bsPrefix="sidebar-btn" onClick = { createDoc }>New Document</Button>
-        </div>
           {/*<span style = {{color: 'white'}}> Total of documents: {documents.length}</span>*/}
           <List className="doc-list">
             {documents.map((doc) => {

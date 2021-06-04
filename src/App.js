@@ -1,12 +1,10 @@
 
 // import InlineMath from "react-katex/src/InlineMath";
-import 'katex/dist/katex.min.css';
-import { InlineMath } from 'react-katex';
-import {SquareComponent} from "./components/math/square-component";
-import {IntegrationComponent} from "./components/math/integration-component";
-import {useCallback, useState} from "react/cjs/react.production.min";
-import {TestApp} from "./components/math/test-app";
-import {Link} from "react-dom";
+// import {SquareComponent} from "./components/math/square-component";
+// import {IntegrationComponent} from "./components/math/integration-component";
+// import {useCallback, useState} from "react/cjs/react.production.min";
+// import {TestApp} from "./components/math/test-app";
+// import {Link} from "react-dom";
 
 import './App.css';
 

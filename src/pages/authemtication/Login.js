@@ -30,6 +30,7 @@ export default function Login() {
   return (
     <>
       <Card className = 'signup'>
+        <Link to = "/" className = 'icon'> EzMathDoc </Link>
         <div className= 'signupContainer'>
         <Card.Body>
           <h2 className="title">Log In</h2>
@@ -43,14 +44,17 @@ export default function Login() {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
+            <Button disabled={loading} className="auth-btn" type="submit"
+            // style={{
+            //   backgroundColor: "rgb(236, 220, 149)"}}
+            >
               Log In
             </Button>
           </Form>
-          <div className="w-100 text-center mt-3">
+          <div className="auth-links">
             <Link to="/forgot-password">Forgot Password?</Link>
           </div>
-          <div className="w-100 text-center mt-2">
+          <div className="auth-links">
             Need an account? <Link to="/signup">Sign Up</Link>
           </div>
         </Card.Body>

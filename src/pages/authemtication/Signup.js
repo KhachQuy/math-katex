@@ -35,6 +35,9 @@ export default function Signup() {
       <>
 
         <Card className = "signup">
+            <Link to ='/' className = "signup-logo">
+                EzMathDoc
+            </Link>
             <div className="signupContainer">
           <Card.Body>
             <h2 className="title">Sign Up</h2>
@@ -53,7 +56,8 @@ export default function Signup() {
                 <Form.Control type="password" ref={passwordConfirmRef} required />
               </Form.Group>
               <div className = "btnContainer">
-                <Button disabled={loading} className="w-100" type="submit">
+                <Button 
+                disabled={loading} className="w-100" type="submit">
                     Sign Up
 
                 </Button>

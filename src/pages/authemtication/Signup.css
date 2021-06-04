@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     font-family: "Nunito", sans-serif;
-   
   }
   
   button {
@@ -69,9 +68,37 @@
   .secondary-btn {
     text-align: center;
     text-decoration: none!important;
+
   }
-  .link {
-    text-align: center;
-    text-decoration: none!important;
+  .signup-logo{
+  font-family: "Lucida Handwriting", "Courier New", monospace;
+  width: fit-content;
+  text-decoration: none !important;
+  font-size: 3rem ;
+  color: rgb(42, 46, 59);
+}
+  .signup-logo:hover{
+    color: black;
   }
-  
+
+  .auth-links{
+    position: relative;
+    margin: auto;
+    font-size: 1.2rem;
+    color: white;
+  }
+  a{
+    text-decoration: none !important;
+    font-size: 1.2rem;
+    color: rgb(20, 148, 9) !important;
+  }
+
+  .auth-btn.btn.btn-primary{
+    background-color:  rgb(253, 239, 215) ;
+    border: none;
+    width: 100%;
+    color: black;
+    border-radius: 20px;
+  }
+
+
