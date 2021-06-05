@@ -3,7 +3,7 @@ import ReactQuill from "react-quill";
 // import { Document, Page, Text } from '@react-pdf/renderer'
 import {useCallback, useEffect, useState, useRef} from "react";
 import {database} from "../../../firebase";
-import {Render} from "../rendering";
+import {Rendering} from "../rendering";
 import './style.css'
 
 export const DocumentEditor = ( {docRef}) => {
@@ -11,8 +11,9 @@ export const DocumentEditor = ( {docRef}) => {
   // const [save, setSave] = useState('')
   
   const [text, setText] = useState('');
-  let preText = "";
-  let posText = text;
+  const [savedText, setSavedText] = useState('');
+  const [autoSaveInMillisecond] = useState(3000);
+
   const onTextChanged = useCallback(async (value, delta, source, editor) => {
       const content = editor.getText();
           if (content.endsWith(' /\n')) {
@@ -40,32 +41,32 @@ export const DocumentEditor = ( {docRef}) => {
     
   }, [docRef]);
 
-  // Autosave function
-  async function Saving (docId) {
-    preText = text
-    const doc = await database.document.doc(docId);
-    doc.update({body: text});
-    
-  };
+
+  function savingDoc(docId, textToSave, shouldSave) {
+    if (!shouldSave) {
+      return Promise.resolve();
+    }
+
+    const doc = database.document.doc(docId);
+    return doc.update({body: textToSave});
+  }
+
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      // only save if text change after 3s
-      if ( posText != preText) {
-        Saving(docRef.id);
-      }
-      else {
-        return
-      }
-    },3000);
-    return () => clearInterval(interval);
+    const savingIntervalId = setInterval(() => {
+      savingDoc(docRef.id, text, text !== savedText).then(() => {
+        setSavedText(text);
+      });
+    }, autoSaveInMillisecond);
 
-  }, );
+    return () => {
+      clearInterval(savingIntervalId);
+    };
 
-
+  },[text, savedText, autoSaveInMillisecond, docRef]);
 
   return (
-  <>
+  <div className='document-editor'>
     <div className="text-area">
       <ReactQuill 
       value={text} 
@@ -77,11 +78,9 @@ export const DocumentEditor = ( {docRef}) => {
         <div className = 'render-header'>
           {docRef.name}
         </div>
-        <div classNam = "text">
-            <Render input = {text} />
-        </div>
+        <Rendering input = {text} />
       </div>
     </div>
-  </>
+  </div>
   )
 };
