@@ -5,7 +5,7 @@ import ReactQuill from "react-quill";
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
 
-export const Render = ({input}) => {
+export const Rendering = ({input}) => {
     var Latex = require('react-latex');
 
     // const transform = useCallback (() => {
@@ -18,7 +18,7 @@ export const Render = ({input}) => {
       }
       
       return (
-        <>
+        <div className='rendering'>
           {/* <InlineMath */}
           <Latex>
             {removeHTML(input)}
@@ -27,7 +27,7 @@ export const Render = ({input}) => {
         
 
         
-        </>
+        </div>
       )
 
 }

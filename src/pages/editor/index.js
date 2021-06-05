@@ -87,10 +87,12 @@ export const Editor = () => {
             onDocumentSelected={onDocumentSelectedCallback}
             onDocumentDeleted={onDocumentDeletedCallback}
             />
-        <div className= 'editor-area'>
         {showEditor && <DocumentEditor docRef={activeDocumentRef} />}
-        </div>
+        {/*<div className= 'editor-area'>*/}
+        {/*  */}
+        {/*</div>*/}
       </div>
+      <div className='status-bar'/>
     </div>
   );
 };

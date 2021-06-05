@@ -1,22 +1,32 @@
-.text-area {
-    width: 50%;
-    float: left;
-    background-color: white;
-    height: 100%;
-    overflow: auto;
-
+.document-editor {
+    display: flex;
+    flex-grow: 1;
 }
 
-.render-area {
-    height: 100%;
-    width: 50%;
-    float:right;
+.document-editor .text-area {
+    display: flex;
+    flex-grow: 1;
+}
+
+.document-editor .text-area .quill {
+    flex-grow: 1;
+}
+
+.document-editor .render-area {
+    display: flex;
+    /*flex-grow: 1;*/
+    overflow: scroll;
     background-color: #6c7279;
 }
 
-.text-area .ql-editor {
-   min-height: 100vh;
+/*.render-area {*/
+/*    height: 100%;*/
+/*    width: 50%;*/
+/*    float:right;*/
+/*    */
+/*}*/
 
+.text-area .ql-editor {
     box-shadow: 0 0 5px 0 RGBA(0,0,0,0.5);
     background-color: whitesmoke;
 }

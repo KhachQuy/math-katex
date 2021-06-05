@@ -87,31 +87,34 @@ export const DocumentSideBar = ({onDocumentCreated, onDocumentSelected, onDocume
   }
   return (
     <>
-      <div className = "Sidebar"> 
+      <div className = "document-sidebar">
+        <div className="operations">
           <Button bsPrefix="sidebar-btn" onClick = { createDoc }>New Document</Button>
-          {/*<span style = {{color: 'white'}}> Total of documents: {documents.length}</span>*/}
-          <List style={{maxHeight: '100%', overflow: 'auto'}} className="doc-list">
-            {documents.map((doc) => {
-              const { id, name } = doc;
-              return (
-                // list of created documents on sidebar
-                <div key={id}>
-                  <ListItem className ="item"
-                      button
-                      selected = {selectedIndex === id}
-                      onClick={(event) => handleListItemClick(event,doc)}
-                      alignItems = 'flex-start'
-                      >
-                    <ListItemText primary={name} />
-                    <DeleteIcon onClick = {() => deleteDocument(doc) } ></DeleteIcon>
-                  </ListItem>
-                  <Divider></Divider>
-                </div>
+        </div>
 
-              )
+        {/*<span style = {{color: 'white'}}> Total of documents: {documents.length}</span>*/}
+        <List style={{maxHeight: '100%', overflow: 'auto'}} className="doc-list">
+          {documents.map((doc) => {
+            const { id, name } = doc;
+            return (
+              // list of created documents on sidebar
+              <div key={id}>
+                <ListItem className ="item"
+                    button
+                    selected = {selectedIndex === id}
+                    onClick={(event) => handleListItemClick(event,doc)}
+                    alignItems = 'flex-start'
+                    >
+                  <ListItemText primary={name} />
+                  <DeleteIcon onClick = {() => deleteDocument(doc) } ></DeleteIcon>
+                </ListItem>
+                <Divider></Divider>
+              </div>
 
-            })}
-          </List>
+            )
+
+          })}
+        </List>
           {/* Create document form */}
           <Modal show ={create} onHide = {cancelDoc}>
             <Form onSubmit = {handleSubmit}>

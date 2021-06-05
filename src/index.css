@@ -1,0 +1,5 @@
+#EzMathDoc-container {
+    display: flex;
+    flex-direction: column;
+    height: .8vh;
+}
