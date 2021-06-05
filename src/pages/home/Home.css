@@ -23,16 +23,28 @@
     text-decoration: none ;
 }
 
-/* h1{
+.heading{
     font-family: 'Rationale', sans-serif;
     letter-spacing: 3px;
     
 }
-p{
+.footing{
+    font-family: 'Rationale', sans-serif;
+    letter-spacing: 3px;
+    color: white;
+    
+}
+.h-description{
     font-family: 'Rationale', sans-serif;
     font-size: 20px;
     letter-spacing: 3px;
-} */
+}
+.f-description{
+    color: white;
+    font-family: 'Rationale', sans-serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
 a1{
     font-family: 'Rationale', sans-serif;
     font-size: 25px;
@@ -57,11 +69,19 @@ a3{
     position: relative;
     z-index: 10;
     }
+.f-line{
+    width: 80%;
+    border-bottom: 3px solid rgb(136, 136, 136);
+    margin-bottom: 100px;
+    margin: auto;
+    position: relative;
+    z-index: 99;
+    }
 .footer{
     margin:auto;
     text-align: center;
     bottom: 50px;
     width: 100vw;
     position: fixed;
-    background-color: #4F4F4F;
+    background-color: #414040;
 }

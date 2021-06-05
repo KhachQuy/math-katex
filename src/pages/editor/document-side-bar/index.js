@@ -90,7 +90,7 @@ export const DocumentSideBar = ({onDocumentCreated, onDocumentSelected, onDocume
       <div className = "Sidebar"> 
           <Button bsPrefix="sidebar-btn" onClick = { createDoc }>New Document</Button>
           {/*<span style = {{color: 'white'}}> Total of documents: {documents.length}</span>*/}
-          <List className="doc-list">
+          <List style={{maxHeight: '100%', overflow: 'auto'}} className="doc-list">
             {documents.map((doc) => {
               const { id, name } = doc;
               return (

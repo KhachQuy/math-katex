@@ -14,10 +14,9 @@ export const DocumentEditor = ( {docRef}) => {
   let preText = "";
   let posText = text;
   const onTextChanged = useCallback(async (value, delta, source, editor) => {
-      // console.log(`==> Text: ${text}`);
       const content = editor.getText();
           if (content.endsWith(' /\n')) {
-            alert('about to load function component');
+            ;
           }
       setText(value);
   }, []);
@@ -74,8 +73,14 @@ export const DocumentEditor = ( {docRef}) => {
 
     </div>
     <div className='render-area'>
-        <Render input = {text} />
-      
+      <div className = "screen">
+        <div className = 'render-header'>
+          {docRef.name}
+        </div>
+        <div classNam = "text">
+            <Render input = {text} />
+        </div>
+      </div>
     </div>
   </>
   )

@@ -10,10 +10,8 @@
 .render-area {
     height: 100%;
     width: 50%;
-    float: right;
-    background-color: #698cdf;
-    overflow: auto;
-    white-space: pre;
+    float:right;
+    background-color: #6c7279;
 }
 
 .text-area .ql-editor {
@@ -42,3 +40,22 @@
     border: none;
     background: none;
 } */
+.screen{
+    background: rgb(255, 255, 231);
+    position: relative;
+    display: block;
+    margin:auto;
+    height: 100%;
+    width: 100%;
+    font-size: 18px;
+    padding: 10px;
+
+    margin:1px; 
+    padding:1px;
+    word-wrap:break-word;
+}
+.render-header{
+    font-size: 2rem;
+    text-align: center;
+    border-bottom: 3px double;   
+}

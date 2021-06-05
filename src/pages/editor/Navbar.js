@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Navbar, Nav, Button, NavLink } from 'react-bootstrap'
 import { useAuth } from "../../context/AuthContext"
-import { useHistory } from "react-router-dom"
+import { useHistory,Link } from "react-router-dom"
 import './style.css'
 
 export default function NavbarComponent () {
@@ -38,8 +38,9 @@ export default function NavbarComponent () {
     return (
         <>
     <Navbar bg= "dark" variant = "dark">
+        <Link className = "editor-icon" to = "/"> EzMathDoc </Link>
         <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-start">
+        <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
             Signed in as: <a href = '/user'> {currentUser.email} </a>
             </Navbar.Text>

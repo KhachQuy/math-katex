@@ -1,5 +1,9 @@
 import {useCallback} from 'react';
 import './style.css';
+import ReactQuill from "react-quill";
+
+import 'katex/dist/katex.min.css';
+import { InlineMath, BlockMath } from 'react-katex';
 
 export const Render = ({input}) => {
     var Latex = require('react-latex');
@@ -15,9 +19,14 @@ export const Render = ({input}) => {
       
       return (
         <>
+          {/* <InlineMath */}
           <Latex>
             {removeHTML(input)}
-            </Latex>
+          </Latex>
+          {/* </InlineMath>   */}
+        
+
+        
         </>
       )
 

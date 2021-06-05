@@ -88,7 +88,7 @@ export const Editor = () => {
             onDocumentDeleted={onDocumentDeletedCallback}
             />
         <div className= 'editor-area'>
-        {showEditor && <DocumentEditor docRef={activeDocumentRef} onSave={() => {}} />}
+        {showEditor && <DocumentEditor docRef={activeDocumentRef} />}
         </div>
       </div>
     </div>

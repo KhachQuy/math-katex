@@ -30,7 +30,7 @@ function Navbar() {
                 <div className = "sub-text1">
                     Editor
                 </div>
-                    EzMathDoc
+                EzMathDoc
                 <div className = "sub-text2">
                     LaTeX
                 </div>

@@ -1,19 +1,12 @@
 .Sidebar {
     width: 300px;
     height: 100vh;
-    margin-top: 0px;
-    box-sizing: border-box;
-    /* float: left; */
-    overflow-y: scroll;
-    overflow-x: hidden;
-    /* position: absolute; */
-    box-shadow: 0px 0px 2px black;
     background-color: rgb(27,28,29);
 }
 
 .sidebar-btn{
     display: block;
-    /* position: relative; */
+    position: relative;
     background-color:rgb(30, 128, 68);
     border: 1px solid ;
     border-radius:  40px ;
@@ -25,6 +18,8 @@
 .doc-list{
     padding: 1px 0px !important;
     color: white;
+    overflow-y: scroll;
+
 }
 
 .list-btn {
