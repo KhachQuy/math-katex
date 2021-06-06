@@ -32,10 +32,10 @@ export const RenderingArea = ({title, input}) => {
 
   return (
     <div className='rendering-area'>
-      <div className="screen">
-        <div className='render-header'>
-          {title}
-        </div>
+      <div className='render-header'>
+        {title}
+      </div>
+      <div className='render-latex'>
         <Latex>
           {renderingInput}
         </Latex>
