@@ -3,23 +3,28 @@ import ReactQuill from "react-quill";
 // import { Document, Page, Text } from '@react-pdf/renderer'
 import {useCallback, useEffect, useState, useRef} from "react";
 import {database} from "../../../firebase";
-import {Rendering} from "../rendering";
+import {RenderingArea} from "../rendering-area";
 import './style.css'
 
 export const DocumentEditor = ( {docRef}) => {
 
   // const [save, setSave] = useState('')
   
-  const [text, setText] = useState('');
+  const [inputText, setInputText] = useState('');
+  const [renderingText, setRenderingText] = useState(inputText);
   const [savedText, setSavedText] = useState('');
   const [autoSaveInMillisecond] = useState(3000);
 
   const onTextChanged = useCallback(async (value, delta, source, editor) => {
-      const content = editor.getText();
-          if (content.endsWith(' /\n')) {
-            ;
-          }
-      setText(value);
+      // const content = editor.getText();
+      //     if (content.endsWith(' /\n')) {
+      //       return;
+      //     }
+
+      const deltaContents = editor.getContents();
+      const val = deltaContents.ops[0].insert;
+      setInputText(value);
+      setRenderingText(val);
   }, []);
 
   // read document body
@@ -35,7 +40,7 @@ export const DocumentEditor = ( {docRef}) => {
     promise.then((result) => {
       const data = result.data();
       const { body } = data;
-      setText(body);
+      setInputText(body);
     });
 
     
@@ -54,8 +59,8 @@ export const DocumentEditor = ( {docRef}) => {
 
   useEffect(() => {
     const savingIntervalId = setInterval(() => {
-      savingDoc(docRef.id, text, text !== savedText).then(() => {
-        setSavedText(text);
+      savingDoc(docRef.id, inputText, inputText !== savedText).then(() => {
+        setSavedText(inputText);
       });
     }, autoSaveInMillisecond);
 
@@ -63,24 +68,17 @@ export const DocumentEditor = ( {docRef}) => {
       clearInterval(savingIntervalId);
     };
 
-  },[text, savedText, autoSaveInMillisecond, docRef]);
+  },[inputText, savedText, autoSaveInMillisecond, docRef]);
 
   return (
   <div className='document-editor'>
     <div className="text-area">
       <ReactQuill 
-      value={text} 
+      value={inputText}
       onChange={onTextChanged} />
+    </div>
 
-    </div>
-    <div className='render-area'>
-      <div className = "screen">
-        <div className = 'render-header'>
-          {docRef.name}
-        </div>
-        <Rendering input = {text} />
-      </div>
-    </div>
+    <RenderingArea input={renderingText} title={docRef.name} />
   </div>
   )
 };
